@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- enlace a CSS de Leaflet v. 1.6.0 en la cabecera -->
+    <link rel="stylesheet" href="mapa/codigo_js/leaflet.css"/>
 
+    <!-- enlace a JavaScript de Leaflet v. 1.6.0 -->
+    <script src="mapa/codigo_js/leaflet.js">
+    </script>
     <!-- Fuente de la barra lateral y el cuerpo y titulos-->
     <style>
 
@@ -32,7 +38,7 @@ style="z-index:3;width:250px" id="mySidebar">
     <h3 class="w3-wide"><b>INDICE</b></h3>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    <a href="#" class="w3-bar-item w3-button">Dresses</a>
+    <a href="#huesca" class="w3-bar-item w3-button">Huesca</a>
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       Catalunya <i class="fa fa-caret-down"></i>
     </a>
@@ -42,9 +48,9 @@ style="z-index:3;width:250px" id="mySidebar">
       <a href="#" class="w3-bar-item w3-button">Barcelona</a>
       <a href="#" class="w3-bar-item w3-button">Girona</a>
     </div>
-    <a href="#huesca" class="w3-bar-item w3-button">Huesca</a>
     <a href="#zaragoza" class="w3-bar-item w3-button">Zaragoza</a>
     <a href="#teruel" class="w3-bar-item w3-button">Teruel</a>
+    <a href="#mapa" class="w3-bar-item w3-button">Busca tu municipio</a>
   </div>
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
@@ -70,28 +76,32 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
   
   <!-- Encabezado -->
   <header class="w3-container w3-xlarge"> <!--tipo de encabezado-->
-    <p class="w3-left">Jeans</p> <!--titulo del encabezado en la parte izquierda-->
+    <p class="w3-left">BuyaMap</p> <!--titulo del encabezado en la parte izquierda-->
     <p class="w3-right"> <!--Simbolo de encabezado en la parte derecha-->
       <i class="fa fa-shopping-cart w3-margin-right"></i> <!--Simbolo del carrito-->
       <i class="fa fa-search"></i> <!-- Simbolo de la lupa para buscar-->
     </p>
   </header>
   <!--FIn del encabezado-->
-  
+
   <!-- Imagen del encabezado -->
+ 
   <div class="w3-display-container w3-container">
     <img src="zgz.png" alt="zgz" style="width:100%"> <!--Adjuntar imagen, etiqueta y tamaño completo-->
     <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
       <h1 class="w3-jumbo w3-hide-small">New arrivals</h1><!--Titulo 1 dentro de la imagen-->
       <h1 class="w3-hide-large w3-hide-medium">New arrivals</h1> <!--Titulo 1 dentro de la imagen para pantallas de smartphone-->
       <h1 class="w3-hide-small">COLLECTION 2016</h1> <!--Titulo más pequeño dentro de la imagen-->
-      <p><a href="#jeans" class="w3-button w3-black w3-padding-large w3-large">SHOP NOW</a></p> <!--Enlace a ubicacion dentro de la pagina-->
+      <p><a href="#huesca" class="w3-button w3-black w3-padding-large w3-large">SHOP NOW</a></p> <!--Enlace a ubicacion dentro de la pagina-->
     </div>
   </div>
 
+
+
+
     <!--Barra divisoria entre la imagen del encabezado y las imagenes inferiores.-->    
-  <div class="w3-container w3-text-grey" id="jeans"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
-    <p>8 items</p>
+  <div class="w3-container w3-text-grey" id="huesca"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
+    <p>HUESCA. 8 items</p>
   </div>
 
   <!--AQUI EMPIEZA EL CATALOGO DE PRODUCTOS-->
@@ -158,8 +168,8 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
 
 
   <!--Barra divisoria entre la imagen del encabezado y las imagenes inferiores.-->    
-  <div class="w3-container w3-text-grey" id="jackets"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
-    <p>8 items</p>
+  <div class="w3-container w3-text-grey" id="zaragoza"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
+    <p>ZARAGOZA. 8 items</p>
   </div>
 
   <!--AQUI EMPIEZA EL CATALOGO DE PRODUCTOS-->
@@ -220,6 +230,100 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
       </div>
     </div>
   </div>
+
+
+
+
+
+   <!--Barra divisoria entre la imagen del encabezado y las imagenes inferiores.-->    
+   <div class="w3-container w3-text-grey" id="teruel"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
+    <p>TERUEL. 8 items</p>
+  </div>
+
+  <!--AQUI EMPIEZA EL CATALOGO DE PRODUCTOS-->
+  <div class="w3-row w3-grayscale">
+    <div class="w3-col l3 s6"> <!-- Primera columna-->
+      <div class="w3-container"> <!-- Primera fila-->
+        <img src="/w3images/jeans1.jpg" style="width:100%"> <!-- Adjuntar la imagen, y el tamaño completo-->
+        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+      </div>
+      <div class="w3-container"> <!-- Segunda fila-->
+        <img src="/w3images/jeans2.jpg" style="width:100%"> <!-- Adjuntar la imagen, y el tamaño completo-->
+        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
+      </div>
+    </div>
+
+    <div class="w3-col l3 s6"> <!--Segunda columna-->
+      <div class="w3-container"><!-- Primera fila-->
+        <div class="w3-display-container">
+          <img src="/w3images/jeans2.jpg" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <span class="w3-tag w3-display-topleft">New</span> <!--Icono en la parte superior izquierda-->
+          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
+            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+          </div>
+        </div>
+        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
+      </div>
+      <div class="w3-container"><!-- Segunda fila-->
+        <img src="/w3images/jeans3.jpg" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+      </div>
+    </div>
+
+    <div class="w3-col l3 s6"><!--Tercera columna-->
+      <div class="w3-container"><!-- Primera fila-->
+        <img src="/w3images/jeans3.jpg" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+      </div>
+      <div class="w3-container"><!-- Segunda fila-->
+        <div class="w3-display-container">
+          <img src="/w3images/jeans4.jpg" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <span class="w3-tag w3-display-topleft">Sale</span>
+          <div class="w3-display-middle w3-display-hover"><!--Icono en la parte central-->
+            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button><!--Lo que pone dentro del icono central-->
+          </div>
+        </div>
+        <p>Vintage Skinny Jeans<br><b class="w3-text-red">$14.99</b></p>
+      </div>
+    </div>
+
+    <div class="w3-col l3 s6"><!--Cuarta columna-->
+      <div class="w3-container"><!-- Primera fila-->
+        <img src="/w3images/jeans4.jpg" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+        <p>Vintage Skinny Jeans<br><b>$14.99</b></p>
+      </div>
+      <div class="w3-container"><!-- Segunda fila-->
+        <img src="/w3images/jeans1.jpg" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--Barra divisoria entre la imagen del encabezado y las imagenes inferiores.-->    
+  <div class="w3-container w3-text-grey" id="mapa"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
+    <p>MAPA</p>
+  </div>
+  <!--AQUI SE INTRODUCE EL MAPA-->
+  <div id="bloque_mapa" 
+  style="width: 800px; height: 400px;"> 
+  </div>
+  <!-- aqui ya se mete el javascript de Leaflet, que incluye el codigo especial para que se vea el mapa-->
+  <script>
+      // definimos el mapa como una varianble y le ajustamos dónde lo queremos ver
+      var mi_mapa = L.map('bloque_mapa').setView([41.5, -1], 7);
+      // añadimos mapa de fondo
+      L.tileLayer(
+      // dirección de las tiles
+      'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+      // propiedades
+      { maxZoom: 10, // zoom máximo 10
+      // Líneas de atribución
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' + '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+      id: 'mapbox.streets'
+      }).addTo(mi_mapa);
+  </script>
 
   <!-- APARTADO DE SUBSCIPCION -->
   <div class="w3-container w3-black w3-padding-32"> <!--Contenedor para la suscripcion-->

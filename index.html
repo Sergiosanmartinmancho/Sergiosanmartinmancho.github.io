@@ -296,7 +296,7 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
   </div>
   <!--AQUI SE INTRODUCE EL MAPA-->
   <div id="bloque_mapa" 
-  style="width: 900px; height: 400px;box-shadow:5px 5px 5px #888"> 
+  style="width: 950px; height: 300px;box-shadow:5px 5px 5px #888"> 
   </div>
   <!-- aqui ya se mete el javascript de Leaflet, que incluye el codigo especial para que se vea el mapa-->
   <script>
@@ -338,7 +338,10 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
       L.marker([41.87, 0.42],{draggable: true}).addTo(mi_mapa);//sabiñanigo
     </script>
 
-
+<!--Barra divisoria entre la imagen del encabezado y las imagenes inferiores.-->    
+<div class="w3-container w3-text-grey" id="mapa"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
+  <p><b> </b></p>
+</div>
 
   <!-- APARTADO DE SUBSCIPCION -->
   <div class="w3-container w3-black w3-padding-32" id="footer"> <!--Contenedor para la suscripcion-->

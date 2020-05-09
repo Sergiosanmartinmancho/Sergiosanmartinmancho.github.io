@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <!-- enlace a CSS de Leaflet v. 1.6.0 en la cabecera -->
-    <link rel="stylesheet" href="mapa/codigo_js/leaflet.css"/>
+    <link rel="stylesheet" href="mapa/leaflet/leaflet.css"/>
 
     <!-- enlace a JavaScript de Leaflet v. 1.6.0 -->
-    <script src="mapa/codigo_js/leaflet.js">
+    <script src="mapa/leaflet/leaflet.js">
     </script>
     <!-- Fuente de la barra lateral y el cuerpo y titulos-->
     <style>
@@ -324,6 +324,16 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' + '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
       id: 'mapbox.streets'
       }).addTo(mi_mapa);
+
+    src = "Mapa/aragon.js"
+    var aragon = L.geoJSON(
+      aragon, {
+        color:'red',
+        fillColor:'blue',
+        fillOpacity: 0.2,
+      });
+      aragon.addTo(mi_mapa)
+      L.marker([41.66, -4.71],{draggable: true}).addTo(mi_mapa);
   </script>
 
   <!-- APARTADO DE SUBSCIPCION -->

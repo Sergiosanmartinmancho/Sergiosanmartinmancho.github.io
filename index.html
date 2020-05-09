@@ -34,22 +34,21 @@
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" 
 style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
-    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide"><b>INDICE</b></h3>
-  </div>
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i></div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+    <a href="#inicio" class="w3-bar-item w3-button">HOME</a>
     <a href="#huesca" class="w3-bar-item w3-button">Huesca</a>
-    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Catalunya <i class="fa fa-caret-down"></i>
-    </a>
-    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Lleida</a>
-      <a href="#" class="w3-bar-item w3-button">Tarragona</a>
-      <a href="#" class="w3-bar-item w3-button">Barcelona</a>
-      <a href="#" class="w3-bar-item w3-button">Girona</a>
-    </div>
     <a href="#zaragoza" class="w3-bar-item w3-button">Zaragoza</a>
     <a href="#teruel" class="w3-bar-item w3-button">Teruel</a>
+
+    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">Otras Comunidades <i class="fa fa-caret-down"></i>
+      </a>
+      <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Catalunya</a>
+        <a href="#" class="w3-bar-item w3-button">Madrid</a>
+        <a href="#" class="w3-bar-item w3-button">Navarra</a>
+        <a href="#" class="w3-bar-item w3-button">Comunitat Valenciana</a>
+      </div>
     <a href="#mapa" class="w3-bar-item w3-button">Busca tu municipio</a>
   </div>
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
@@ -58,8 +57,10 @@ style="z-index:3;width:250px" id="mySidebar">
 </nav>
 <!-- AQUI EDITA EL BLOQUE SUPERIOR UNICAMENTE PARA LA VISUALIZACION EN SMARTPHONES-->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge"> <!--Estilo de la barra superior-->
-  <div class="w3-bar-item w3-padding-24 w3-wide">buyamap</div> <!--Tamaño de la barra y el logo de la pagina web-->
-  <p></p> by Sergio</p>
+  <div class="w3-bar-item w3-padding-24 w3-wide">BUYaMAP
+    <h4>by Sergio</h4>
+  </div> <!--Tamaño de la barra y el logo de la pagina web-->
+  
   <!--Abrir la barra lateral cuando se pincha en las "fa fa bars" (las 3 barritas laterales-->
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 </header>
@@ -72,12 +73,14 @@ style="z-index:3;width:250px" id="mySidebar">
 style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina principal-->
 
   <!-- Barra superior para pantallas de smartphone -->
-  <div class="w3-hide-large" ><!--Tipo de barra-->
+  <div class="w3-hide-large"><!--Tipo de barra-->
   style="margin-top:83px"></div> <!--Tamaño de la barra-->
   
   <!-- Encabezado -->
-  <header class="w3-container w3-xlarge"> <!--tipo de encabezado-->
-    <p class="w3-left">BuyaMap</p> <!--titulo del encabezado en la parte izquierda-->
+  <header class="w3-container w3-xlarge" id="inicio"> <!--tipo de encabezado-->
+    <p class="w3-left"> BUYaMAP  
+      <h6>by Sergio</h6>
+    </p> <!--titulo del encabezado en la parte izquierda-->
     <p class="w3-right"> <!--Simbolo de encabezado en la parte derecha-->
       <i class="fa fa-shopping-cart w3-margin-right"></i> <!--Simbolo del carrito-->
       <i class="fa fa-search"></i> <!-- Simbolo de la lupa para buscar-->
@@ -88,11 +91,11 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
   <!-- Imagen del encabezado -->
  
   <div class="w3-display-container w3-container">
-    <img src="fotos/encabezado.png" alt="zgz" style="width:100%"> <!--Adjuntar imagen, etiqueta y tamaño completo-->
+    <img src="fotos/encabezado1.png" alt="zgz" style="width:100%"> <!--Adjuntar imagen, etiqueta y tamaño completo-->
     <div class="w3-display-topleft w3-text-white" style="padding:50px 48px">
-      <h1 class="w3-jumbo w3-hide-small">New arrivals</h1><!--Titulo 1 dentro de la imagen-->
+      <h1 class="w3-jumbo w3-hide-small">Busca tu ciudad</h1><!--Titulo 1 dentro de la imagen-->
       <h1 class="w3-hide-large w3-hide-medium">New arrivals</h1> <!--Titulo 1 dentro de la imagen para pantallas de smartphone-->
-      <h1 class="w3-hide-small">COLLECTION 2016</h1> <!--Titulo más pequeño dentro de la imagen-->
+      <h1 class="w3-hide-small">Mapas personalizados</h1> <!--Titulo más pequeño dentro de la imagen-->
       <p><a href="#huesca" class="w3-button w3-black w3-padding-large w3-large">SHOP NOW</a></p> <!--Enlace a ubicacion dentro de la pagina-->
     </div>
   </div>
@@ -308,7 +311,7 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
   </div>
   <!--AQUI SE INTRODUCE EL MAPA-->
   <div id="bloque_mapa" 
-  style="width: 800px; height: 400px;"> 
+  style="width: 900px; height: 400px;box-shadow:5px 5px 5px #888"> 
   </div>
   <!-- aqui ya se mete el javascript de Leaflet, que incluye el codigo especial para que se vea el mapa-->
   <script>
@@ -319,7 +322,7 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
       // dirección de las tiles
       'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
       // propiedades
-      { maxZoom: 10, // zoom máximo 10
+      { maxZoom: 20, // zoom máximo 10
       // Líneas de atribución
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' + '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
       id: 'mapbox.streets'
@@ -333,9 +336,35 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
         fillOpacity: 0.2,
       });
       aragon.addTo(mi_mapa)
-      L.marker([41.66, -4.71],{draggable: true}).addTo(mi_mapa);
+      L.marker([41.65, -0.9],{draggable: true}).addTo(mi_mapa); //Zaragoza
+      L.marker([41.70, -1],{draggable: true}).addTo(mi_mapa); //Utebo
+      L.marker([41.35, -1.65],{draggable: true}).addTo(mi_mapa); //Calatayud
+      L.marker([42.13, -1.15],{draggable: true}).addTo(mi_mapa);//Ejea
+      L.marker([41.90, -1.72],{draggable: true}).addTo(mi_mapa); //Tarazona
+      L.marker([41.23, -0.04],{draggable: true}).addTo(mi_mapa); //Caspe
+      L.marker([41.48, -1.38],{draggable: true}).addTo(mi_mapa);//la almunia
+      L.marker([41.92, -1.26],{draggable: true}).addTo(mi_mapa);//tauste
+      L.marker([42.14, -0.41],{draggable: true}).addTo(mi_mapa); //huesca
+      L.marker([42.03, 0.13],{draggable: true}).addTo(mi_mapa);//barbastro
+      L.marker([41.91, 0.19],{draggable: true}).addTo(mi_mapa);//monzon
+      L.marker([41.85, 0.3],{draggable: true}).addTo(mi_mapa);//binefar
+      L.marker([41.52, 0.35],{draggable: true}).addTo(mi_mapa);//fraga
+      L.marker([42.57, -0.56],{draggable: true}).addTo(mi_mapa);//jaca
+      L.marker([41.87, 0.42],{draggable: true}).addTo(mi_mapa);//sabiñanigo
+      L.marker([40, 1],{draggable: true}).addTo(mi_mapa); //Tamarite
+      L.marker([42, 1],{draggable: true}).addTo(mi_mapa);
+      L.marker([40, 1],{draggable: true}).addTo(mi_mapa);
+      L.marker([42, 1],{draggable: true}).addTo(mi_mapa);
+      L.marker([40, 1],{draggable: true}).addTo(mi_mapa);
+      L.marker([42, 1],{draggable: true}).addTo(mi_mapa);
+      L.marker([40, 1],{draggable: true}).addTo(mi_mapa);
+      L.marker([42, 1],{draggable: true}).addTo(mi_mapa);
+      L.marker([40, 1],{draggable: true}).addTo(mi_mapa);
+     
   </script>
-
+<div class="w3-container w3-text-grey" id="mapa"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
+  <p> </p>
+</div>
   <!-- APARTADO DE SUBSCIPCION -->
   <div class="w3-container w3-black w3-padding-32"> <!--Contenedor para la suscripcion-->
     <h1>Subscribe</h1> <!--Titulo 1-->

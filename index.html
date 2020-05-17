@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
+<!--AQUI EMPIEZA EL ENCABEZADO DE LA PAGINA-->
     <head>
-    <title>BUYaMAP</title>
+    <title>BUYaMAP</title> <!--titulo de la pagina web-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Links CSS-->
+    <!-- Links CSS de la plantilla-->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -24,12 +25,17 @@
     body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
     </style>
-    <!--Icono para la pagina del navegador-->
-    <link rel="icon" type="image/ico" href="Images/logo.ico" sizes="192x192">
+
+    <!--Icono para la pestaña del navegador-->
+    <link rel="icon" type="image/ico" href="fotos/logo.png" sizes="200x200">
 
     </head>
+
+<!--AQUI TERMINA EL ENCABEZADO DE LA PAGINA-->
+
 <!--AQUI EMPIEZA EL CUERPO DE LA PAGINA WEB-->
-<body class="w3-content" style="max-width:1200px">
+<body 
+class="w3-content" style="max-width:1200px">
 
 <!-- MENU LATERAL -->
 <!--Aqui elige el tipo de barra lateral del CSS-->
@@ -38,38 +44,38 @@ style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i></div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+    <!--Nombres de los apartados de la barra lateral, con sus links internos de la pagina-->
     <a href="#inicio" class="w3-bar-item w3-button">HOME</a>
     <a href="#huesca" class="w3-bar-item w3-button">Huesca</a>
     <a href="#zaragoza" class="w3-bar-item w3-button">Zaragoza</a>
     <a href="#teruel" class="w3-bar-item w3-button">Teruel</a>
-
+        <!--Aqui empieza un desplegable donde apareceran los nombres de los mapas disponibles fuera de Aragon-->
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">Otras <i class="fa fa-caret-down"></i>
       </a>
       <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-        <a href="#catalunya" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Catalunya</a>
-        <a href="#madrid" class="w3-bar-item w3-button">Madrid</a>
-        <a href="#navarra" class="w3-bar-item w3-button">Navarra</a>
-        <a href="#valencia" class="w3-bar-item w3-button">Comunitat Valenciana</a>
+        <a href="#catalunya" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Catalunya</a>
+        <a href="#madrid" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Comunidad de Madrid</a>
+        <a href="#navarra" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Comunidad Foral de Navarra</a>
+        <a href="#valencia" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Comunitat Valenciana</a>
       </div>
     <a href="#personal" class="w3-bar-item w3-button">Diseña tu mapa</a>
     <a href="#mapa" class="w3-bar-item w3-button">Busca tu municipio</a>
   
 </div>
   <a href="#footer" class="w3-bar-item w3-button w3-padding">contacto</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">¿Como puedo comprar un mapa? </a> 
 
 </nav>
+
 <!-- AQUI EDITA EL BLOQUE SUPERIOR UNICAMENTE PARA LA VISUALIZACION EN SMARTPHONES-->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge"> <!--Estilo de la barra superior-->
-  <div class="w3-bar-item w3-padding-24 w3-wide">BUYaMAP
-    <h4>by Sergio</h4>
-  </div> <!--Tamaño de la barra y el logo de la pagina web-->
+  <div class="w3-bar-item w3-padding-24 w3-wide">BUYaMAP</div> <!--Tamaño de la barra y el logo de la pagina web-->
   
   <!--Abrir la barra lateral cuando se pincha en las "fa fa bars" (las 3 barritas laterales-->
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 </header>
 
-<!-- Overlay effect when opening sidebar on small screens -->
+<!-- Cerrar el menu lateral -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- AQUI EMPIEZA EL CONTENIDO DE LA PAGINA -->
@@ -82,132 +88,138 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
   
   <!-- Encabezado -->
   <header class="w3-container w3-xlarge" id="inicio"> <!--tipo de encabezado-->
-    <p class="w3-left"> BUYaMAP  
-      <h6>by Sergio</h6>
-    </p> <!--titulo del encabezado en la parte izquierda-->
-    <p class="w3-right"> <!--Simbolo de encabezado en la parte derecha-->
-      <a href="#footer" class="fa fa-shopping-cart w3-margin-right"></a> <!--Simbolo del carrito-->
-      <a href="#huesca" class="fa fa-search"></a> <!-- Simbolo de la lupa para buscar-->
+    <img src="fotos/logo.png" alt="logo" style="width:3%"> <!--Logo de la pagina-->
+    <p class="w3-left"> BUYaMAP  </p> <!--titulo del encabezado en la parte izquierda-->
+    <p class="w3-right"> <!--Simbolos de encabezado en la parte derecha-->
+      <a href="#footer" class="fa fa-shopping-cart w3-margin-right"></a> <!--Simbolo del carrito, con link hacia el pie de pagina-->
+      <a href="#huesca" class="fa fa-search"></a> <!-- Simbolo de la lupa para buscar, con link hacia el inicio de los productos-->
     </p>
   </header>
   <!--FIn del encabezado-->
 
-  <!-- Imagen del encabezado -->
+  <!-- Imagen principal -->
  
   <div class="w3-display-container w3-container">
     <img src="fotos/encabezado1.png" alt="zgz" style="width:100%"> <!--Adjuntar imagen, etiqueta y tamaño completo-->
     <div class="w3-display-topleft w3-text-white" style="padding:50px 48px">
       <h1 class="w3-jumbo w3-hide-small">.Mapas decorativos</h1><!--Titulo 1 dentro de la imagen-->
       <h1 class="w3-hide-large w3-hide-medium">Mapas decorativos</h1> <!--Titulo 1 dentro de la imagen para pantallas de smartphone-->
-      <h1 class="w3-hide-small">.  Pedidos personalizados</h1> <!--Titulo más pequeño dentro de la imagen-->
-      <p><a href="#huesca" class="w3-button w3-black w3-padding-large w3-large">-   Encuentra tu ciudad, pulsando aquí  -</a></p> <!--Enlace a ubicacion dentro de la pagina-->
+      <h1 class="w3-hide-small">.  Pedidos personalizados</h1> <!--Subtitulo dentro de la imagen-->
+      <p><a href="#huesca" class="w3-button w3-black w3-padding-large w3-large">Encuentra tu ciudad, pulsando aquí</a></p> <!--Enlace a ubicacion dentro de la pagina-->
     </div></div>
+
+
+<!--AQUI EMPIEZA LA LISTA DE PRODUCTOS-->
+
+
     <!--Barra divisoria entre la imagen del encabezado y las imagenes inferiores.-->    
   <div class="w3-container w3-text-grey" id="huesca"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
-    <p><b>HUESCA. 8 municipios disponibles</b></p>
-  </div>
-
-
+    <p><b>HUESCA. 8 municipios disponibles</b></p></div>
 
   <!--AQUI EMPIEZA EL CATALOGO DE PRODUCTOS DE HUESCA-->
   <div class="w3-row w3-grayscale">
-    <div class="w3-col l3 s6"> <!--Primera columna-->
-      <div class="w3-container"><!-- Primera fila-->
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de contenedor-->
-          <img src="fotos/huesca.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
-          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/huesca.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+          <img src="fotos/huesca.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño-->
+          <div class="w3-display-middle w3-display-hover"> <!--Iconos en la parte central-->
+            <button class="w3-button w3-black"> <a href="./fotos/huesca.jpg">Ampliar </a> <!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Huesca<br><b>9.99€</b></p></div>
-      <div class="w3-container"><!-- Segunda fila-->
+        <p>Huesca<br><b>9.99€</b></p></div> <!--Nombre y precio del producto-->
+
+      <div class="w3-container">
        <div class="w3-display-container"> <!--Tipo de contenedor-->
-          <img src="fotos/barbastro.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/barbastro.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/barbastro.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-           <button class="w3-button w3-black"> <a href="#footer">Solicitar</a>
-            <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/barbastro.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+           <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+            <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
        </div>
-       <p>Barbastro<br><b>9.99€</b></p></div>
-    </div>
-    <div class="w3-col l3 s6"> <!--Segunda columna-->
-      <div class="w3-container"><!-- Primera fila-->
-        <div class="w3-display-container"> <!--Tipo de contenedor-->
-          <img src="fotos/monzon.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
-          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/monzon.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
-          </div>
-        </div>
-        <p>Monzón<br><b>9.99€</b></p></div>
-      <div class="w3-container"><!-- Primera fila-->
-        <div class="w3-display-container"> <!--Tipo de contenedor-->
-          <img src="fotos/sabiñanigo.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
-          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/sabiñanigo.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a>
-            <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
-          </div>
-        </div>
-        <p>Sabiñánigo<br><b>9.99€</b></p></div></div>
-    <div class="w3-col l3 s6"><!--Tercera columna-->
-      <div class="w3-container"><!-- Primera fila-->
-        <div class="w3-display-container"> <!--Tipo de contenedor-->
-          <img src="fotos/jaca.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
-          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/jaca.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
-          </div>
-        </div>
-        <p>Jaca<br><b>9.99€</b></p></div>
-        
-      <div class="w3-container"><!-- Segunda fila-->
-        <div class="w3-display-container"> <!--Tipo de contenedor-->
-          <img src="fotos/fraga.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
-          <span class="w3-tag w3-display-topleft">Nuevo</span> 
-          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/fraga.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
-          </div>
-        </div>
-        <p>Fraga<br><b>9.99€</b></p></div>
+       <p>Barbastro<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
     </div>
 
-    <div class="w3-col l3 s6"><!--Cuarta columna-->
-      <div class="w3-container"><!-- Primera fila-->
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de contenedor-->
-          <img src="fotos/binefar.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/monzon.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño-->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/binefar.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/monzon.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Binéfar<br><b>9.99€</b></p></div>
-      <div class="w3-container"><!-- Segunda fila-->
+        <p>Monzón<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de contenedor-->
-          <img src="fotos/tamarite.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/sabiñanigo.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/tamarite.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/sabiñanigo.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+            <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Tamarite de Litera<br><b>9.99€</b></p></div>
+        <p>Sabiñánigo<br><b>9.99€</b></p></div></div><!--Nombre y precio del producto-->
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <div class="w3-display-container"> <!--Tipo de contenedor-->
+          <img src="fotos/jaca.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
+          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
+            <button class="w3-button w3-black"> <a href="./fotos/jaca.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
+          </div>
+        </div>
+        <p>Jaca<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+        
+      <div class="w3-container">
+        <div class="w3-display-container"> <!--Tipo de contenedor-->
+          <img src="fotos/fraga.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
+          <span class="w3-tag w3-display-topleft">Nuevo</span> <!--Icono en la parte superior izquierda -->
+          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
+            <button class="w3-button w3-black"> <a href="./fotos/fraga.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
+          </div>
+        </div>
+        <p>Fraga<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+    </div>
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <div class="w3-display-container"> <!--Tipo de contenedor-->
+          <img src="fotos/binefar.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
+          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
+            <button class="w3-button w3-black"> <a href="./fotos/binefar.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button><!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
+          </div>
+        </div>
+        <p>Binéfar<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+
+      <div class="w3-container">
+        <div class="w3-display-container"> <!--Tipo de contenedor-->
+          <img src="fotos/tamarite.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
+          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
+            <button class="w3-button w3-black"> <a href="./fotos/tamarite.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
+          </div>
+        </div>
+        <p>Tamarite de Litera<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
     </div></div>
 
   <!--Barra divisoria-->    
@@ -217,105 +229,109 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
 
   <!--AQUI EMPIEZA EL CATALOGO DE PRODUCTOS DE ZARAGOZA-->
   <div class="w3-row w3-grayscale">
-    <div class="w3-col l3 s6"> <!--Primera columna-->
-      <div class="w3-container"><!-- Primera fila-->
+    <div class="w3-col l3 s6"> 
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/zgz.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/zgz.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/zgz.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/zgz.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Zaragoza<br><b>9.99€</b></p></div>
-      <div class="w3-container"><!-- Segunda fila-->
+        <p>Zaragoza<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+
+      <div class="w3-container">
        <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/utebo.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/utebo.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/utebo.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-           <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-            <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/utebo.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+           <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+            <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
        </div>
-       <p>Utebo<br><b>9.99€</b></p></div>
+       <p>Utebo<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
     </div>
-    <div class="w3-col l3 s6"> <!--Segunda columna-->
-      <div class="w3-container"><!-- Primera fila-->
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/calatayud.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/calatayud.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/calatayud.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/calatayud.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Calatayud<br><b>9.99€</b></p></div>
-      <div class="w3-container"><!-- Primera fila-->
+        <p>Calatayud<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/tarazona.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/tarazona.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/tarazona.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-            <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/tarazona.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+            <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Tarazona<br><b>9.99€</b></p></div></div>
-    <div class="w3-col l3 s6"><!--Tercera columna-->
-      <div class="w3-container"><!-- Primera fila-->
+        <p>Tarazona<br><b>9.99€</b></p></div></div><!--Nombre y precio del producto-->
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/almunia.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
-          <span class="w3-tag w3-display-topleft">Nuevo</span> 
+          <img src="fotos/almunia.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
+          <span class="w3-tag w3-display-topleft">Nuevo</span> <!--Icono en la parte superior izquierda-->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/almunia.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/almunia.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>La Almunia de D.ª Godina<br><b>9.99€</b></p></div>
+        <p>La Almunia de D.ª Godina<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
         
-      <div class="w3-container"><!-- Segunda fila-->
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/ejea.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
-
+          <img src="fotos/ejea.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/ejea.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/ejea.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Ejea de los Caballeros<br><b>9.99€</b></p></div>
+        <p>Ejea de los Caballeros<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
     </div>
 
-    <div class="w3-col l3 s6"><!--Cuarta columna-->
-      <div class="w3-container"><!-- Primera fila-->
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/caspe.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/caspe.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/caspe.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/caspe.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Caspe<br><b>9.99€</b></p></div>
-      <div class="w3-container"><!-- Segunda fila-->
+        <p>Caspe<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <span class="w3-tag w3-display-topleft">Nuevo</span> 
-          <img src="fotos/tauste.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <span class="w3-tag w3-display-topleft">Nuevo</span> <!--Icono en la parte superior izquierda-->
+          <img src="fotos/tauste.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/tauste.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/tauste.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Tauste<br><b>9.99€</b></p></div>
+        <p>Tauste<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
     </div></div>
 
     <!--Barra divisoria-->    
@@ -325,145 +341,206 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
 
   <!--AQUI EMPIEZA EL CATALOGO DE PRODUCTOS DE TERUEL-->
   <div class="w3-row w3-grayscale">
-    <div class="w3-col l3 s6"> <!--Primera columna-->
-      <div class="w3-container"><!-- Primera fila-->
+    <div class="w3-col l3 s6"> 
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/teruel.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/teruel.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/teruel.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/teruel.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Teruel<br><b>9.99€</b></p></div>
-      <div class="w3-container"><!-- Segunda fila-->
+        <p>Teruel<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+
+      <div class="w3-container">
        <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/alcañiz.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/alcañiz.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/alcañiz.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-           <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-            <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/alcañiz.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+           <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+            <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
        </div>
-       <p>Alcañiz<br><b>9.99€</b></p></div>
+       <p>Alcañiz<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
     </div>
-    <div class="w3-col l3 s6"> <!--Segunda columna-->
-      <div class="w3-container"><!-- Primera fila-->
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/andorra.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/andorra.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/andorra.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/andorra.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Andorra<br><b>9.99€</b></p></div>
-      <div class="w3-container"><!-- Primera fila-->
+        <p>Andorra<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/calamocha.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/calamocha.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/calamocha.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-            <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/calamocha.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+            <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Calamocha<br><b>9.99€</b></p></div></div>
-    <div class="w3-col l3 s6"><!--Tercera columna-->
-      <div class="w3-container"><!-- Primera fila-->
+        <p>Calamocha<br><b>9.99€</b></p></div></div><!--Nombre y precio del producto-->
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/calanda.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
-          <span class="w3-tag w3-display-topleft">Nuevo</span> 
+          <img src="fotos/calanda.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
+          <span class="w3-tag w3-display-topleft">Nuevo</span> <!--Icono en la parte superior izquierda-->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/calanda.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/calanda.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Calanda<br><b>9.99€</b></p></div>
+        <p>Calanda<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
         
-      <div class="w3-container"><!-- Segunda fila-->
-        <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/alcorisa.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
-
+      <div class="w3-container">
+        <div class="w3-display-container"><!--Tipo de conetenedor-->
+          <img src="fotos/alcorisa.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/alcorisa.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/alcorisa.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Alcorisa<br><b>9.99€</b></p></div>
+        <p>Alcorisa<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
     </div>
 
-    <div class="w3-col l3 s6"><!--Cuarta columna-->
-      <div class="w3-container"><!-- Primera fila-->
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/utrillas.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/utrillas.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/utrillas.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/utrillas.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Utrillas<br><b>9.99€</b></p></div>
+        <p>Utrillas<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
     </div></div>
 
-  <!--Barra divisoria-->    
-  <div class="w3-container w3-text-grey" id="catalunya"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
-  <p><b>Catalunya. 1 municipio disponible</b></p>
-  </div>
-  <!--AQUI EMPIEZA EL CATALOGO DE PRODUCTOS DE TERUEL-->
-  <div class="w3-row w3-grayscale">
-    <div class="w3-col l3 s6"> <!--Primera columna-->
-      <div class="w3-container"><!-- Primera fila-->
-        <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/barcelona.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
-          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/barcelona.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+    <!--AQUI EMPIEZA EL CATALOGO DE PRODUCTOS DE CATEGORIA "OTRAS"-->
+
+    <!--Catalunya-->
+    <!--Barra divisoria-->    
+    <div class="w3-container w3-text-grey" id="catalunya"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
+      <p><b>CATALUNYA. 1 municipio disponible</b></p>
+    </div>
+  
+    <div class="w3-row w3-grayscale">
+      <div class="w3-col l3 s6"> 
+        <div class="w3-container">
+          <div class="w3-display-container"> <!--Tipo de conetenedor-->
+            <img src="fotos/barcelona.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
+            <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
+              <button class="w3-button w3-black"> <a href="./fotos/barcelona.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+                <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+              <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+                <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
+            </div>
           </div>
-        </div>
-      
+          <p>Barcelona<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+      </div>
     
-    </div></div>
-<!--Barra divisoria-->    
-<div class="w3-container w3-text-grey" id="madrid"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
-  <p><b>Madrid. 1 municipio disponible</b></p>
-  </div>
-  <!--AQUI EMPIEZA EL CATALOGO DE PRODUCTOS DE CATALUNYA-->
-  <div class="w3-row w3-grayscale">
-    <div class="w3-col l3 s6"> <!--Primera columna-->
-      <div class="w3-container"><!-- Primera fila-->
+      <!--Madrid-->
+    <!--Barra divisoria-->    
+    <div class="w3-container w3-text-grey" id="madrid"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
+      <p><b>COMUNIDAD DE MADRID. 1 municipio disponible</b></p>
+    </div>
+ 
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
         <div class="w3-display-container"> <!--Tipo de conetenedor-->
-          <img src="fotos/madrid.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño completo-->
+          <img src="fotos/madrid.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
           <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
-            <button class="w3-button w3-black"> <a href="./fotos/madrid.jpg">Ampliar </a>
-              <i  class="fa fa-search"></i></button> <!--Lo que pone dentro del icono central-->
-            <button class="w3-button w3-black"> <a href="#footer">Solicitalo</a>
-              <i  class="fa fa-shopping-cart"></i></button> <!--Lo que pone dentro del icono central-->
+            <button class="w3-button w3-black"> <a href="./fotos/madrid.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
           </div>
         </div>
-        <p>Madrid<br><b>9.99€</b></p></div>
+        <p>Madrid<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+    </div>
+
+    <!--Navarra-->
+   <!--Barra divisoria-->    
+   <div class="w3-container w3-text-grey" id="navarra"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
+    <p><b>COMUNIDAD FORAL DE NAVARRA. 1 municipio disponible</b></p>
+  </div>
+
+  <div class="w3-row w3-grayscale">
+    <div class="w3-col l3 s6"> 
+      <div class="w3-container">
+        <div class="w3-display-container"> <!--Tipo de conetenedor-->
+          <img src="fotos/pamplona.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
+          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
+            <button class="w3-button w3-black"> <a href="./fotos/pamplona.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
+          </div>
+        </div>
+        <p>Pamplona<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+    </div></div>
+
+    <!--Valencia-->
+    <!--Barra divisoria-->    
+    <div class="w3-container w3-text-grey" id="valencia"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
+      <p><b>COMUNITAT VALENCIANA. 1 municipio disponible</b></p>
+    </div>
+  
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <div class="w3-display-container"> <!--Tipo de conetenedor-->
+          <img src="fotos/valencia.png" style="width:100%"><!-- Adjuntar la imagen, y el tamaño -->
+          <div class="w3-display-middle w3-display-hover"> <!--Icono en la parte central-->
+            <button class="w3-button w3-black"> <a href="./fotos/valencia.jpg">Ampliar </a><!--Boton para ampliar el mapa-->
+              <i  class="fa fa-search"></i></button> <!--Icono de la lupa-->
+            <button class="w3-button w3-black"> <a href="#footer">Solicitar</a><!--Boton para solicitar el mapa-->
+              <i  class="fa fa-shopping-cart"></i></button> <!--Icono del carrito-->
+          </div>
+        </div>
+        <p>Valencia<br><b>9.99€</b></p></div><!--Nombre y precio del producto-->
+    </div>
+    </div>
+
+<!--FIN DEL CATALOGO DE PRODUCTOS-->
+
+
+<!--AQUI EMPIEZA EL APARTADO "DISEÑA TU MAPA"-->
+
  <!--Barra divisoria entre la imagen del encabezado y las imagenes inferiores.-->    
  <div class="w3-container w3-text-grey" id="personal"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
   <p><b>DISEÑA TU MAPA</b></p>
-  Si deseas un mapa de tu ciudad, pueblo natal o tu localidad favorita y no esta en la lista anterior, ¡haznoslo saber!, lo elaboraremos personalmente ti.
+  Si deseas un mapa de tu ciudad o tu localidad favorita y no esta en la lista anterior, ¡haznoslo saber!, lo elaboraremos personalmente ti.
   <br>
   <p>Así mismo, puedes personalizar el color y diseño de cualquier mapa. ¡Contáctanos!</p>
 </div>
+
+<!--AQUI TERMINA EL APARTADO "DISEÑA TU MAPA"-->
+
+
+<!--AQUI EMPIEZA EL APARTADO "BUSCA TU MUNICIPIO"-->
 
   <!--Barra divisoria entre la imagen del encabezado y las imagenes inferiores.-->    
   <div class="w3-container w3-text-grey" id="mapa"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
     <p><b>BUSCA TU MUNICIPIO</b></p>
   </div>
+
   <!--AQUI SE INTRODUCE EL MAPA-->
   <div id="bloque_mapa" 
   style="width: 950px; height: 300px;box-shadow:5px 5px 5px #888"> 
@@ -471,7 +548,7 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
   <!-- aqui ya se mete el javascript de Leaflet, que incluye el codigo especial para que se vea el mapa-->
   <script>
       // definimos el mapa como una varianble y le ajustamos dónde lo queremos ver
-      var mi_mapa = L.map('bloque_mapa').setView([41.5, -1], 7);
+      var mi_mapa = L.map('bloque_mapa').setView([41.5, -1], 6);
       // añadimos mapa de fondo
       L.tileLayer(
       // dirección de las tiles
@@ -487,10 +564,11 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
       var escala = L.control.scale() 
       escala.addTo(mi_mapa);
 
-      
+      //Se añade la capa geoJson
       src = "carto/aragon.js"
       var aragon = L.geoJson(aragon).addTo(mi_mapa)
 
+      //Se añaden los marcadores en cada ciudad donde este creado un mapa
       L.marker([41.65, -0.9],{draggable: true}).addTo(mi_mapa); //Zaragoza
       L.marker([41.70, -1],{draggable: true}).addTo(mi_mapa); //Utebo
       L.marker([41.35, -1.65],{draggable: true}).addTo(mi_mapa); //Calatayud
@@ -506,21 +584,34 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
       L.marker([41.52, 0.35],{draggable: true}).addTo(mi_mapa);//fraga
       L.marker([42.57, -0.56],{draggable: true}).addTo(mi_mapa);//jaca
       L.marker([41.87, 0.42],{draggable: true}).addTo(mi_mapa);//sabiñanigo
+      L.marker([40.34, -1.10],{draggable: true}).addTo(mi_mapa);//teruel
+      L.marker([41.05, -0.14],{draggable: true}).addTo(mi_mapa);//alcañiz
+      L.marker([40.98, -0.44],{draggable: true}).addTo(mi_mapa);//andorra
+      L.marker([40.81, -0.85],{draggable: true}).addTo(mi_mapa);//utrillas
+      L.marker([40.94, -0.23],{draggable: true}).addTo(mi_mapa);//calanda
+      L.marker([40.92, -1.29],{draggable: true}).addTo(mi_mapa);//calamocha
+      L.marker([40.89, -0.38],{draggable: true}).addTo(mi_mapa);//alcorisa
+      L.marker([41.31, 2.15],{draggable: true}).addTo(mi_mapa);//barcelona
+      L.marker([39.47, -0.38],{draggable: true}).addTo(mi_mapa);//valencia
+      L.marker([40.40, -3.68],{draggable: true}).addTo(mi_mapa);//madrid
+      L.marker([42.82, -1.65],{draggable: true}).addTo(mi_mapa);//pamplona
+      
     </script>
+<!--AQUI TERMINA EL MAPA Y EL APARTADO DE "BUSCA TU MUNICIPIO"-->
 
 <!--Barra divisoria entre la imagen del encabezado y las imagenes inferiores.-->    
 <div class="w3-container w3-text-grey" id="mapa"> <!--Nombre de la barra (para interactuar con la busqueda y otros botones-->
   <p><b> </b></p>
 </div>
 
-  <!-- APARTADO DE SUBSCIPCION -->
+  <!-- AQUI EMPIEZA EL APARTADO  DE CONTACTO-->
   <div class="w3-container w3-black w3-padding-32" id="footer"> <!--Contenedor para la suscripcion-->
     <h1>Realiza tu pedido</h1> <!--Titulo 1-->
     <h2>poniéndote en contacto mediante:</h2> <!--Parrafo-->
     <div class="w3-col s4 w3-justify">
-      <p><i class="fa fa-fw fa-map-marker"></i> c/Inventada, Zaragoza. S/N</p>
+      <p><i class="fa fa-fw fa-map-marker"></i> Zaragoza. 50006</p>
       <p><i class="fa fa-fw fa-phone"></i>+34 999999999</p>
-      <p><i class="fa fa-fw fa-envelope"></i> srg12397@gmail.com</p>
+      <p><i class="fa fa-fw fa-envelope"></i> <b>srg12397@gmail.com</b></p>
       <h4>Métodos de pago</h4>
       <p><i class="fa fa-fw fa-cc-amex"></i> Transferencia</p>
       <p><i class="fa fa-fw fa-credit-card"></i> Bizum</p>
@@ -529,28 +620,35 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
   </div>
   </footer>
 
-  <!--FIN DEL ULTIMO APARTADO-->
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
-  <a href="http://es.web-counter.net" title="contador de visitas"><img src="http://www.web-counter.net/count_20091204.php?c=e9n0oIXiFTs" style="border:0;padding:0;margin:0;" alt="contador de visitas"></a><br/><font size="1" face="Arial"><a href="http://es.web-counter.net" title="contador de visitas">contador de visitas</a></font>
+  <!--FIN DEL APARTADO DE CONTACTO-->
 
-  <!-- FINAL DEL CONTENIDO DE LA PAGINA WEB -->
+  <!--Fuente de la plantilla-->
+  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
 </div>
 
-<!-- Newsletter Modal -->
+<!-- FINAL DEL CONTENIDO DE LA PAGINA WEB -->
+
+
+<!-- Popup "Pasos para tener tu mapa" -->
 <div id="newsletter" class="w3-modal">
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
     <div class="w3-container w3-white w3-center">
       <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
-      <h2 class="w3-wide">NEWSLETTER</h2>
-      <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
-      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+      <h2 class="w3-wide">¿Como comprar tu mapa?</h2>
+      <p>1) Busca tu ciudad en el listado</p>
+      <p>2) Envia un correo a nuestro email con la siguiente informacion:</p>
+      <p>- Tu ciudad elegida</p>
+      <p>- Color del mapa</p>
+      <p>- Tamaño de impresión </p>
+      <p>- Dirección de envio</p>
+      <p>- Metodo de pago</p>
     </div>
   </div>
 </div>
 
+<!--Scripts de la plantilla-->
 <script>
-// Accordion 
+
 function myAccFunc() {
   var x = document.getElementById("demoAcc");
   if (x.className.indexOf("w3-show") == -1) {
@@ -560,12 +658,12 @@ function myAccFunc() {
   }
 }
 
-// Click on the "Jeans" link on page load to open the accordion for demo purposes
+
 document.getElementById("myBtn").click();
 
 
 
-// Open and close sidebar
+// Abrir y cerrar la barra lateral
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("myOverlay").style.display = "block";

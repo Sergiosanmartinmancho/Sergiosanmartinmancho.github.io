@@ -18,6 +18,10 @@
     <!-- enlace a JavaScript de Leaflet v. 1.6.0 -->
     <script src="carto/leaflet/leaflet.js">
     </script>
+
+    <!-- cargar javascript (objeto GeoJSON transformado) -->
+    <script src="carto/ccaa.js"></script>
+
     <!-- Fuente de la barra lateral y el cuerpo y titulos-->
     <style>
 
@@ -564,29 +568,41 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
       var escala = L.control.scale() 
       escala.addTo(mi_mapa);
 
-      
+      //Se carga uno de los mapas base
+      var stamen_tms = L.tileLayer(
+      'http://a.tile.stamen.com/terrain/{z}/{x}/{y}.png', { // URL con tiles
+      // Lineas de atribucion
+      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>,<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash;Map data: &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+      maxZoom: 20  // zoom máximo
+      });
       
       //Se agrega capa WMS
-      var hola = L.tileLayer.wms('http://www.idee.es/wms/PNOA/PNOA?', {  //URL WMS
+      var PNOA = L.tileLayer.wms('http://www.idee.es/wms/PNOA/PNOA?', {  //URL WMS
       layers: 'PNOA',          // capa del WMS
       format: 'image/png',     // tipo de formato
       transparent: true,       // activa capa alfa/transparente
       });
-  hola.addTo(mi_mapa);         // añadir capa al mapa
+      PNOA.addTo(mi_mapa);         // añadir capa al mapa
+
+      // Se carga otro mapa base: TM de OpenStreetMap render Mapnik 
+      var OSM_mapnik = L.tileLayer(
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
+      {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors })',
+      maxZoom: 20
+      });
+      OSM_mapnik.addTo(mi_mapa);
 
   
-      //Se carga javascript (objeto GeoJSON transformado)
-      
-      src = "./carto/aragon.js"
+      //Se carga javascript (objeto GeoJSON transformado) de las Comunidades Autonomas
 
-      var aragon = L.geoJson(
-        aragon, {
-          color:'red',
-          fillColor:'blue',
-          fillOpacitiy: 0.2,
-        });
-        aragon.addTo(mi_mapa)
-      
+      var ccaa =L.geoJSON( // crear objeto provincias como capa geojson
+      ccaa, {             // código a cargar: `ccaa`
+      color: 'black',             // estilo color
+      fillColor: 'white',        //        color de relleno
+      fillOpacity: 0.3,         //        opacidad de relleno
+      });
+      ccaa.addTo(mi_mapa);
 
       //Se añaden los marcadores en cada ciudad donde este creado un mapa
   
@@ -617,34 +633,32 @@ style="margin-left:250px"> <!--Espacio de la margen izquierda de la pagina princ
       L.marker([39.47, -0.38],{draggable: true}).addTo(mi_mapa);//valencia
       L.marker([40.40, -3.68],{draggable: true}).addTo(mi_mapa);//madrid
       L.marker([42.82, -1.65],{draggable: true}).addTo(mi_mapa);//pamplona
-      
+
 // INICIO de código de Control de capas
 
-// CAPAS BASE - que puedo intercambiar
+// Se crea los mapas base: Los que se pueden intercambiar
 var baseMaps = {                  // variable con apartado de mapas base
-    "Stamen": stamen_tms,
-    "OpenStreetMap": OSM_mapnik,  // elemento a incluir y descripción
-    //"Imagen PNOA": PNOA1
+    "Stamen": stamen_tms,         // Capa a integrar con su nombre
+    "OpenStreetMap": OSM_mapnik,  // Capa a integrar con su nombre
     };
 
-// Capas del proyecto que puedo activar y desactivar
+// Se crean las capas que se pueden activar y desactivar
 var overlayMaps = {              // apartado de capas
-    "Ortotfoto PNOA": PNOA1,     // elemento a incluir y descripción
-    "Vuelo americano": PNOA2,
-    "Círulo molón :-P": circulo
+    "ortofoto PNOA": PNOA,       // Capa a integrar con su nombre
+    "Comunidades Autónomas":ccaa,// Capa a integrar con su nombre
+    
     };
 
-// Ahora genero el control de las capas
+// Se genera el control de las capas
 var capas = L.control.layers(   // variable con control de capas
   baseMaps,                     // añadiendo capas base
   overlayMaps,                  // añadiendo capas
-  {collapsed:false});           // control desplegado
+  {collapsed:true});           // control desplegado
 
-// Y lo cargo a mi mapa
-capas.addTo(mapa1);           // añadimos control de capas al mapa
+//Se carga el selector de capas al mapa
+capas.addTo(mi_mapa);           
 
 </script>
-
 
 <!--AQUI TERMINA EL MAPA Y EL APARTADO DE "BUSCA TU MUNICIPIO"-->
 

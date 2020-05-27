@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+    <!--AQUI EMPIEZA EL ENCABEZADO-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <!--Estilos CSS-->
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+
+        <!--Estilo del mapa-->
+        <style>
+        #map {
+            width: 1002px;
+            height: 827px;
+        }
+        </style>
+        <title>MAPA QGIS2WEB SERGIO SANMARTIN</title> <!--Titulo de la pagina web-->
+    </head>
+
+    <!--AQUI TERMINA EL ENCABEZADO-->
+
+    <!--AQUI EMPIEZA EL CUERPO DE LA PAGINA-->
+    <body>
+        <div id="map">
+        </div>
+        <!--JS de leaflet y asociados-->
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet.wms.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        
+        <!--Capas a cargar en geoJson-->
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/Coberturas_1.js"></script> <!--Capa de coberturas-->
+        <script src="data/Especiesvegetales_2.js"></script> <!--Capa de especies vegetales-->
+
+        <!--AQUI EMPIZA EL SCRIPT DEL MAPA-->
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+            highlightLayer.openPopup();
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[41.963033214433345,0.22852527066059497],[42.301966926018004,0.7721179182855191]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+
+        //Control de medidas en sistema metrico
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        //Se añade el control de medidas
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        //WMS mapa base de España del IGN
+        map.createPane('pane_CallejeroCallejerogrisCallejerorecortadoCallejeroparaimagen_0');
+        map.getPane('pane_CallejeroCallejerogrisCallejerorecortadoCallejeroparaimagen_0').style.zIndex = 400;
+        var layer_CallejeroCallejerogrisCallejerorecortadoCallejeroparaimagen_0 = L.WMS.layer("http://www.ign.es/wms-inspire/ign-base", "IGNBaseOrto", {
+            pane: 'pane_CallejeroCallejerogrisCallejerorecortadoCallejeroparaimagen_0',
+            format: 'image/png',
+            uppercase: true,
+            transparent: true,
+            continuousWorld : true,
+            tiled: true,
+            info_format: 'text/html',
+            opacity: 1,
+            identify: false,
+            attribution: '',
+        });
+        map.addLayer(layer_CallejeroCallejerogrisCallejerorecortadoCallejeroparaimagen_0);
+        function pop_Coberturas_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            
+
+            //JS del POPUP de los contenidos de la capa de coberturas
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nval'] !== null ? autolinker.link(feature.properties['nval'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tablas_ifn3 NVAL_NVAL-NOMBRE'] !== null ? autolinker.link(feature.properties['tablas_ifn3 NVAL_NVAL-NOMBRE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        //Estilo de la capa de coberturas
+        function style_Coberturas_1_0(feature) {
+            switch(String(feature.properties['tablas_ifn3 NVAL_NVAL-NOMBRE'])) {
+
+                //Aqui empieza las propiedades (color, opacidad, ...) de cada una de las categorias
+                case 'Arbolado ':
+                    return {
+                pane: 'pane_Coberturas_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(44,122,37,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Matorral ':
+                    return {
+                pane: 'pane_Coberturas_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(108,206,89,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Herbazal ':
+                    return {
+                pane: 'pane_Coberturas_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,247,130,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Monte sin vegetación superior ':
+                    return {
+                pane: 'pane_Coberturas_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(176,102,41,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Complementos del bosque ':
+                    return {
+                pane: 'pane_Coberturas_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(145,198,141,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Cultivo ':
+                    return {
+                pane: 'pane_Coberturas_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,192,22,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Humedales ':
+                    return {
+                pane: 'pane_Coberturas_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(33,113,203,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Agua ':
+                    return {
+                pane: 'pane_Coberturas_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(36,234,248,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Elementos artificiales ':
+                    return {
+                pane: 'pane_Coberturas_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,42,45,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Coberturas_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(125,139,143,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Coberturas_1');
+        map.getPane('pane_Coberturas_1').style.zIndex = 401;
+        map.getPane('pane_Coberturas_1').style['mix-blend-mode'] = 'normal';
+        var layer_Coberturas_1 = new L.geoJson(json_Coberturas_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Coberturas_1',
+            layerName: 'layer_Coberturas_1',
+            pane: 'pane_Coberturas_1',
+            onEachFeature: pop_Coberturas_1,
+            style: style_Coberturas_1_0,
+        });
+
+        //Se agrega al mapa la capa de coberturas
+        bounds_group.addLayer(layer_Coberturas_1);
+        map.addLayer(layer_Coberturas_1);
+
+        
+        function pop_Especiesvegetales_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+
+            //JS del POPUP de los contenidos de la capa de especies vegetales
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['esp1'] !== null ? autolinker.link(feature.properties['esp1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tablas_ifn3 ESP_ESP-NOMBRE1'] !== null ? autolinker.link(feature.properties['tablas_ifn3 ESP_ESP-NOMBRE1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        //Estilos de la capa de especies vegetales
+        function style_Especiesvegetales_2_0(feature) {
+            switch(String(feature.properties['tablas_ifn3 ESP_ESP-NOMBRE1'])) {
+
+                //Aqui empieza las propiedades (color, opacidad, ...) de cada una de las especies  vegetales
+                case 'Buxus sempervirens':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,92,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Juniperus communis':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(33,81,78,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Juniperus oxycedrus':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(53,131,126,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Juniperus phoenicea':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,173,166,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pinus nigra':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(19,43,19,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pinus pinaster':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(35,78,35,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pinus sylvestris':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(54,120,53,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Populus nigra':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,145,92,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Quercus faginea':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(104,99,29,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Quercus ilex':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(146,139,40,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Quercus pubescens (Q. humilis)':
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,183,53,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Especiesvegetales_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,227,227,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+
+        //Se genera el panel
+        map.createPane('pane_Especiesvegetales_2');
+        map.getPane('pane_Especiesvegetales_2').style.zIndex = 402;
+        map.getPane('pane_Especiesvegetales_2').style['mix-blend-mode'] = 'normal';
+        var layer_Especiesvegetales_2 = new L.geoJson(json_Especiesvegetales_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Especiesvegetales_2',
+            layerName: 'layer_Especiesvegetales_2',
+            pane: 'pane_Especiesvegetales_2',
+            onEachFeature: pop_Especiesvegetales_2,
+            style: style_Especiesvegetales_2_0,
+        });
+        //Se añade la capa de especies vegetales
+        bounds_group.addLayer(layer_Especiesvegetales_2);
+        map.addLayer(layer_Especiesvegetales_2);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+
+        //Mapas base
+        var baseMaps = {};
+
+        L.control.layers(baseMaps,{'Especies vegetales<br /><table><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_Buxussempervirens0.png" /></td><td>Buxus sempervirens</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_Juniperuscommunis1.png" /></td><td>Juniperus communis</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_Juniperusoxycedrus2.png" /></td><td>Juniperus oxycedrus</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_Juniperusphoenicea3.png" /></td><td>Juniperus phoenicea</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_Pinusnigra4.png" /></td><td>Pinus nigra</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_Pinuspinaster5.png" /></td><td>Pinus pinaster</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_Pinussylvestris6.png" /></td><td>Pinus sylvestris</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_Populusnigra7.png" /></td><td>Populus nigra</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_Quercusfaginea8.png" /></td><td>Quercus faginea</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_Quercusilex9.png" /></td><td>Quercus ilex</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_QuercuspubescensQhumilis10.png" /></td><td>Quercus pubescens (Q. humilis)</td></tr><tr><td style="text-align: center;"><img src="legend/Especiesvegetales_2_11.png" /></td><td></td></tr></table>': layer_Especiesvegetales_2,'Coberturas<br /><table><tr><td style="text-align: center;"><img src="legend/Coberturas_1_Arbolado0.png" /></td><td>Arbolado </td></tr><tr><td style="text-align: center;"><img src="legend/Coberturas_1_Matorral1.png" /></td><td>Matorral </td></tr><tr><td style="text-align: center;"><img src="legend/Coberturas_1_Herbazal2.png" /></td><td>Herbazal </td></tr><tr><td style="text-align: center;"><img src="legend/Coberturas_1_Montesinvegetaciónsuperior3.png" /></td><td>Monte sin vegetación superior </td></tr><tr><td style="text-align: center;"><img src="legend/Coberturas_1_Complementosdelbosque4.png" /></td><td>Complementos del bosque </td></tr><tr><td style="text-align: center;"><img src="legend/Coberturas_1_Cultivo5.png" /></td><td>Cultivo </td></tr><tr><td style="text-align: center;"><img src="legend/Coberturas_1_Humedales6.png" /></td><td>Humedales </td></tr><tr><td style="text-align: center;"><img src="legend/Coberturas_1_Agua7.png" /></td><td>Agua </td></tr><tr><td style="text-align: center;"><img src="legend/Coberturas_1_Elementosartificiales8.png" /></td><td>Elementos artificiales </td></tr><tr><td style="text-align: center;"><img src="legend/Coberturas_1_9.png" /></td><td></td></tr></table>': layer_Coberturas_1,"Callejero/Callejero gris/Callejero recortado/Callejero para imagen": layer_CallejeroCallejerogrisCallejerorecortadoCallejeroparaimagen_0,}).addTo(map);L.control.scale({position: 'bottomleft', maxWidth: 100, metric: true, imperial: false, updateWhenIdle: false}).addTo(map);
+        setBounds();
+        </script>
+        <!--AQUI TERMINA EL SCRIPT DEL MAPA-->
+    </body>
+    <!--AQUI TERMINA EL CUERPO DE LA PAGINA-->
+</html>
